@@ -1,0 +1,75 @@
+﻿@page
+@model WebApplication3.Pages.ProfileModel
+@{
+}
+<div class="container mt-5">
+
+    <div class="row justify-content-center align-items-center">
+
+        <div class="">
+            <h1 class="mb-3">Profile Page </h1>
+
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <div class="mb-3">
+                            <p >@Model.AppUser.Id</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>@Model.AppUser.Full_Name</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>@Model.AppUser.Credit_Card</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>@Model.AppUser.Gender</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>@Model.AppUser.Mobile_No</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>@Model.AppUser.Delivery_Address</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>@Model.AppUser.AboutMe</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>@Model.AppUser.Email</p>
+                        </div>
+
+                    <div class="col-md-4">
+
+                        <img id="imgPreview" class="rounded-circle"
+                             style="height:300px;width:300px;object-fit:cover"
+                             src="@Model.AppUser.Image" />
+
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function showImgPreview(input) {
+        if (input.files[0]) {
+            var uploadimg = new FileReader();
+            uploadimg.onload = function (displayimg) {
+                $("#imgPreview").attr('src', displayimg.target.result);
+            }
+            uploadimg.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
